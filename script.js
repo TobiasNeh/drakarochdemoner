@@ -12,7 +12,7 @@ canvas.width = A4Width;
 canvas.height = A4Height;
 
 let isMouseDown = false;
-let currentTool = 'wall'; // Starta med "Vägg"
+let currentTool = 'forest'; // Starta med "Skog"
 
 const dungeon = [];
 
@@ -53,6 +53,17 @@ function getColorForTool(value) {
         case 9: return '#8da6b6'; // Sjö
         case 10: return '#98fb98'; // Trädgård
         case 11: return '#a9a9a9'; // Cell
+        case 12: return '#228b22'; // Skog
+        case 13: return '#7cfc00'; // Gräs
+        case 14: return '#2f4f4f'; // Grotta
+        case 15: return '#808080'; // Stad
+        case 16: return '#ff6347'; // By
+        case 17: return '#a52a2a'; // Väg
+        case 18: return '#8b4513'; // Hus
+        case 19: return '#32cd32'; // Träd
+        case 20: return '#deb887'; // Möbler
+        case 21: return '#800080'; // Kistor
+        case 22: return '#dda0dd'; // Staty
         default: return '#d8c4b4'; // Standard: Golv
     }
 }
@@ -94,15 +105,17 @@ function drawCell(e) {
 // Få värdet för det valda verktyget
 function getToolValue(tool) {
     switch (tool) {
-        case 'wall': return 2;
-        case 'floor': return 1;
-        case 'treasure': return 5;
-        case 'trap': return 6;
-        case 'monster': return 7;
-        case 'sarcophagus': return 8;
-        case 'lake': return 9;
-        case 'garden': return 10;
-        case 'cellar': return 11;
+        case 'forest': return 12;
+        case 'grass': return 13;
+        case 'cave': return 14;
+        case 'city': return 15;
+        case 'village': return 16;
+        case 'road': return 17;
+        case 'house': return 18;
+        case 'tree': return 19;
+        case 'furniture': return 20;
+        case 'chest': return 21;
+        case 'statue': return 22;
         default: return 1;
     }
 }
