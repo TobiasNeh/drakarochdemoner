@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rita Dungeon - Drakar och Demoner</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Rita Dungeon - Drakar och Demoner</h1>
+
+    <div>
+        <label for="tool">Välj verktyg:</label>
+        <select id="tool">
+            <option value="wall">Vägg</option>
+            <option value="floor">Golv</option>
+            <option value="treasure">Skatt</option>
+            <option value="trap">Fälla</option>
+            <option value="monster">Monster</option>
+            <option value="sarcophagus">Sarkofag</option>
+            <option value="lake">Sjö</option>
+            <option value="garden">Trädgård</option>
+            <option value="cellar">Cell</option>
+        </select>
+        <button id="clearButton">Rensa Kartan</button>
+    </div>
+
+    <canvas id="dungeonCanvas"></canvas>
+
+    <script src="script.js"></script>
+</body>
+</html>

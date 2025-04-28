@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+    background-color: #f4f4f9;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+#dungeonCanvas {
+    border: 1px solid #333;
+    background-color: #d8c4b4;
+    cursor: crosshair;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+#tool {
+    padding: 5px;
+    margin-bottom: 10px;
+}
