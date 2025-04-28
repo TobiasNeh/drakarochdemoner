@@ -2,7 +2,7 @@ const canvas = document.getElementById('dungeonCanvas');
 const ctx = canvas.getContext('2d');
 const toolSelector = document.getElementById('tool');
 const clearButton = document.getElementById('clearButton');
-const cellSize = 20; // Storlek på varje ruta (20px per cell)
+const cellSize = 40; // Storlek på varje cell (40px per cell)
 
 // A4-sidans storlek i pixel (baserat på en 72dpi utskriftsupplösning)
 const A4Width = 595; // 21 cm
@@ -15,6 +15,10 @@ let isMouseDown = false;
 let currentTool = 'forest'; // Starta med "Skog"
 
 const dungeon = [];
+
+// Lägg till en bakgrundsbild för skogen
+const forestImage = new Image();
+forestImage.src = 'file:///D:/DND%20projekt/images/forest-background.png'; // Ange sökvägen till din bild
 
 // Skapa dungeon-strukturen (vi använder ett 2D-array för att hålla koll på rita objekten)
 function createDungeon() {
@@ -35,8 +39,19 @@ function renderDungeon() {
     for (let y = 0; y < dungeon.length; y++) {
         for (let x = 0; x < dungeon[y].length; x++) {
             const value = dungeon[y][x];
-            ctx.fillStyle = getColorForTool(value);
-            ctx.fillRect(x * cellSize, y * cellSize, cellSize, cellSize);
+            
+            // Om det är "forest", använd bakgrundsbilden
+            if (value === 12) {
+                ctx.drawImage(forestImage, x * cellSize, y * cellSize, cellSize, cellSize);
+            } else {
+                ctx.fillStyle = getColorForTool(value);
+                ctx.fillRect(x * cellSize, y * cellSize, cellSize, cellSize);
+            }
+            
+            // Rita en svart linje runt varje cell (grid)
+            ctx.strokeStyle = "black";
+            ctx.lineWidth = 1;
+            ctx.strokeRect(x * cellSize, y * cellSize, cellSize, cellSize);
         }
     }
 }
@@ -53,7 +68,7 @@ function getColorForTool(value) {
         case 9: return '#8da6b6'; // Sjö
         case 10: return '#98fb98'; // Trädgård
         case 11: return '#a9a9a9'; // Cell
-        case 12: return '#228b22'; // Skog
+        case 12: return '#228b22'; // Skog (detta används inte längre, men är bra att ha för andra objekt)
         case 13: return '#7cfc00'; // Gräs
         case 14: return '#2f4f4f'; // Grotta
         case 15: return '#808080'; // Stad
@@ -105,7 +120,7 @@ function drawCell(e) {
 // Få värdet för det valda verktyget
 function getToolValue(tool) {
     switch (tool) {
-        case 'forest': return 12;
+        case 'forest': return 12; // Skog
         case 'grass': return 13;
         case 'cave': return 14;
         case 'city': return 15;
